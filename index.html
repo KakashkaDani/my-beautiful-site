@@ -179,6 +179,23 @@
                     '<div class="widget"><h3>Solana</h3><div class="value" id="sol-price">Загрузка...</div></div>' +
                     '</div>';
                 setTimeout(fetchCrypto, 1000);
+            } else if (id === 'weather') {
+                content = '<h1>Погода</h1>' +
+                    '<div class="widgets-grid">' +
+                    '<div class="widget"><h3><i class="fas fa-city"></i> Москва</h3><div class="value" id="weather-msk">Загрузка...</div></div>' +
+                    '<div class="widget"><h3><i class="fas fa-city"></i> Санкт-Петербург</h3><div class="value" id="weather-spb">Загрузка...</div></div>' +
+                    '<div class="widget"><h3><i class="fas fa-globe"></i> Лондон</h3><div class="value" id="weather-lon">Загрузка...</div></div>' +
+                    '<div class="widget"><h3><i class="fas fa-globe"></i> Нью-Йорк</h3><div class="value" id="weather-ny">Загрузка...</div></div>' +
+                    '</div>';
+                setTimeout(fetchWeather, 1000);
+            } else if (id === 'team') {
+                content = '<h1>Наша Команда</h1>' +
+                    '<div class="widgets-grid">' +
+                    '<div class="widget" style="text-align:center;"><img src="https://randomuser.me/api/portraits/men/32.jpg" style="width:100px;height:100px;border-radius:50%;margin-bottom:1rem;"><h3>Алексей Иванов</h3><p style="opacity:0.7">CEO & Founder</p></div>' +
+                    '<div class="widget" style="text-align:center;"><img src="https://randomuser.me/api/portraits/women/44.jpg" style="width:100px;height:100px;border-radius:50%;margin-bottom:1rem;"><h3>Мария Петрова</h3><p style="opacity:0.7">Lead Designer</p></div>' +
+                    '<div class="widget" style="text-align:center;"><img src="https://randomuser.me/api/portraits/men/85.jpg" style="width:100px;height:100px;border-radius:50%;margin-bottom:1rem;"><h3>Дмитрий Сидоров</h3><p style="opacity:0.7">CTO</p></div>' +
+                    '<div class="widget" style="text-align:center;"><img src="https://randomuser.me/api/portraits/women/65.jpg" style="width:100px;height:100px;border-radius:50%;margin-bottom:1rem;"><h3>Елена Козлова</h3><p style="opacity:0.7">Marketing Head</p></div>' +
+                    '</div>';
             } else if (id === 'contact') {
                 content = '<h1>Свяжитесь с нами</h1>' +
                     '<form class="contact-form" onsubmit="event.preventDefault(); alert(\'Сообщение отправлено!\');">' +
@@ -225,6 +242,19 @@
                 document.getElementById('eth-price').innerText = '$3,452';
                 document.getElementById('sol-price').innerText = '$148';
             }
+        }
+        async function fetchWeather() {
+            // Имитация погоды так как API требует ключа
+            const cities = ['msk', 'spb', 'lon', 'ny'];
+            const temps = [22, 19, 15, 24];
+            const conditions = ['☀️ Ясно', '⛅ Облачно', '🌧️ Дождь', '⛈️ Гроза'];
+            
+            setTimeout(() => {
+                document.getElementById('weather-msk').innerText = '+' + temps[0] + '°C ' + conditions[0];
+                document.getElementById('weather-spb').innerText = '+' + temps[1] + '°C ' + conditions[1];
+                document.getElementById('weather-lon').innerText = '+' + temps[2] + '°C ' + conditions[2];
+                document.getElementById('weather-ny').innerText = '+' + temps[3] + '°C ' + conditions[3];
+            }, 500);
         }
         init();
     </script>
